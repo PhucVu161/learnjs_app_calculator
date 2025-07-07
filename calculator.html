@@ -7,7 +7,7 @@
 </head>
 <body>
     <div>
-        <input type="number" id="num1"/><br/>
+        <input type="number" id="num1" required="true"/><br/>
         <input type="number" id="num2"/>
         <div>
             <Button id="sum">+</Button>
@@ -22,24 +22,25 @@
 </body>
 </html>
 <script>
-    document.getElementById("sum").addEventListener("click", function(){
+    const getNum = () => {
         const num1 = Number(document.getElementById("num1").value);
         const num2 = Number(document.getElementById("num2").value);
+        return {num1, num2};
+    }
+    document.getElementById("sum").addEventListener("click", function(){
+        const {num1, num2} = getNum();
         document.getElementById("result").textContent = (num1+num2);
     })
     document.getElementById("sub").addEventListener("click", function(){
-        const num1 = Number(document.getElementById("num1").value);
-        const num2 = Number(document.getElementById("num2").value);
+        const {num1, num2} = getNum();
         document.getElementById("result").textContent = (num1-num2);
     })
     document.getElementById("mul").addEventListener("click", function(){
-        const num1 = Number(document.getElementById("num1").value);
-        const num2 = Number(document.getElementById("num2").value);
+        const {num1, num2} = getNum();
         document.getElementById("result").textContent = (num1*num2);
     })
     document.getElementById("div").addEventListener("click", function(){
-        const num1 = Number(document.getElementById("num1").value);
-        const num2 = Number(document.getElementById("num2").value);
+        const {num1, num2} = getNum();
         document.getElementById("result").textContent = (num1/num2);
     })
 </script>
