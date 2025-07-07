@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="number" id="num1"/><br/>
+        <input type="number" id="num2"/>
+        <div>
+            <Button id="sum">+</Button>
+            <Button id="sub">-</Button>
+            <Button id="mul">x</Button>
+            <Button id="div">:</Button>
+        </div>
+        <div>
+            <div>Kết quả: <span id="result"></span></div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.getElementById("sum").addEventListener("click", function(){
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        document.getElementById("result").textContent = (num1+num2);
+    })
+    document.getElementById("sub").addEventListener("click", function(){
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        document.getElementById("result").textContent = (num1-num2);
+    })
+    document.getElementById("mul").addEventListener("click", function(){
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        document.getElementById("result").textContent = (num1*num2);
+    })
+    document.getElementById("div").addEventListener("click", function(){
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        document.getElementById("result").textContent = (num1/num2);
+    })
+</script>
