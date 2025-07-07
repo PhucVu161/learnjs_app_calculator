@@ -3,117 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Calculator</title>
 </head>
 <body>
     <div class="calculator">
-        <div>
-            <input type="number" id="num1"/><br/>
-            <input type="number" id="num2"/>
+        <div id="screen">
+            <input type="text"/>
         </div>
-        <div>
-            <Button id="sum">+</Button>
-            <Button id="sub">-</Button>
-            <Button id="mul">x</Button>
-            <Button id="div">:</Button>
-        </div>
-        <div>
-            <div>Kết quả: <span id="result"></span></div>
-            <span id="message" style="color: red;"></span>
+        <div id="key">
+            <div>
+                <button class="danger">AC</button>
+                <button class="danger">C</button>
+                <button class="danger">OFF</button>
+                <button>%</button>
+            </div>
+            <div>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>:</button>
+            </div>
+            <div>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>x</button>
+            </div>
+            <div>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>-</button>
+            </div>
+            <div>
+                <button>0</button>
+                <button>.</button>
+                <button id="equal">=</button>
+                <button>+</button>
+            </div>
         </div>
     </div>
 </body>
 </html>
-<script>
-    const getNum = () => {
-        const input1 = document.getElementById("num1").value.trim();
-        const input2 = document.getElementById("num2").value.trim();
-        if(input1==="" || input2==""){
-            document.getElementById("message").innerText="Bạn chưa nhập đủ thông tin!";
-            return null;
-        }
-        const num1 = Number(input1);
-        const num2 = Number(input2);
-        document.getElementById("message").innerText="";
-        return {num1, num2};
-    }
-    document.getElementById("sum").addEventListener("click", function(){
-        const {num1, num2} = getNum();
-        document.getElementById("result").textContent = (num1+num2);
-    })
-    document.getElementById("sub").addEventListener("click", function(){
-        const {num1, num2} = getNum();
-        document.getElementById("result").textContent = (num1-num2);
-    })
-    document.getElementById("mul").addEventListener("click", function(){
-        const {num1, num2} = getNum();
-        document.getElementById("result").textContent = (num1*num2);
-    })
-    document.getElementById("div").addEventListener("click", function(){
-        const {num1, num2} = getNum();
-        if(num2===0){
-            document.getElementById("message").innerText="Không chia được cho 0!";
-        }else{
-            document.getElementById("result").textContent = (num1/num2);
-        }
-    })
-</script>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f2f2f2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    div > div {
-        margin: 10px 0;
-    }
-
-    input {
-        width: 120px;
-        padding: 8px;
-        margin: 10px 5px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 16px;
-    }
-
-    button {
-        padding: 8px 16px;
-        font-size: 18px;
-        margin: 0 5px;
-        border: none;
-        border-radius: 6px;
-        background-color: #4CAF50;
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-
-    button:hover {
-        background-color: #388e3c;
-    }
-
-    #result {
-        font-weight: bold;
-        color: #333;
-    }
-
-    #message {
-        display: block;
-        margin-top: 10px;
-        font-size: 14px;
-    }
-
-    /* Tùy chỉnh thẻ div bao toàn bộ */
-    .calculator {
-        background-color: white;
-        padding: 30px 40px;
-        border-radius: 12px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        min-width: 300px;
-    }
-</style>
+<script src="index.js"></script>
