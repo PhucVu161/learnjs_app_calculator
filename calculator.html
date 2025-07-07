@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
 </head>
 <body>
     <div>
-        <input type="number" id="num1" required="true"/><br/>
-        <input type="number" id="num2"/>
+        <div>
+            <input type="number" id="num1" required="true"/><br/>
+            <input type="number" id="num2"/>
+        </div>
         <div>
             <Button id="sum">+</Button>
             <Button id="sub">-</Button>
@@ -17,14 +19,21 @@
         </div>
         <div>
             <div>Kết quả: <span id="result"></span></div>
+            <span id="message" style="color: red;"></span>
         </div>
     </div>
 </body>
 </html>
 <script>
     const getNum = () => {
-        const num1 = Number(document.getElementById("num1").value);
-        const num2 = Number(document.getElementById("num2").value);
+        const num1 = Number(document.getElementById("num1").value.trim());
+        const num2 = Number(document.getElementById("num2").value.trim());
+        if(num1=="" || num2==""){//chưa tối ưu do dùng == nên 0 vẫn gây báo chưa nhập
+            //alert("Bạn chưa nhập đủ thông tin!");
+            document.getElementById("message").innerText="Bạn chưa nhập đủ thông tin!";
+            return null;
+        }
+        document.getElementById("message").innerText="";
         return {num1, num2};
     }
     document.getElementById("sum").addEventListener("click", function(){
