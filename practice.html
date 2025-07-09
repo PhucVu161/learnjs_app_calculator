@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="calculator">
+        <div id="input">
+            <input id="input1" class="input" type="number" placeholder="số thứ nhất"><br/>
+            <input id="input2" class="input" type="number" placeholder="số thứ hai">
+        </div>
+        <div id="operator">
+            <button>+</button>
+            <button>-</button>
+            <button>x</button>
+            <button>:</button>
+        </div>
+        <div id="output">
+            Kết quả: <span id="result"></span><br>
+            <span id="message" style="color: red"></span>
+        </div>
+    </div>
+</body>
+</html>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    body {
+        background-color: rgb(191, 238, 239);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #calculator {
+        background-color: aliceblue;
+        box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+        border-radius: 10px;
+    }
+    #input {
+        margin: 5px;
+    }
+    .input {
+        margin: 5px;
+    }
+    #operator {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    #operator button {
+        width: 20px;
+    }
+    #output {
+        margin: 10px;
+    }
+</style>
+<script>
+    document.querySelectorAll("#operator button").forEach((el)=>{
+        el.addEventListener("click", ()=>cal(el.textContent));
+    })
+    const cal = (operator) => {
+        const input1 = document.querySelector("#input1").value;
+        const input2 = document.querySelector("#input2").value;
+        if(input1===""||input2===""){
+            document.querySelector("#message").textContent = "Bạn chưa nhập đủ!";
+            return null;
+        }
+        document.querySelector("#message").textContent = "";
+        const num1 = Number(input1);
+        const num2 = Number(input2);
+        let result;
+        switch(operator){
+            case "+":
+                result=num1+num2;
+                break;
+            case "-":
+                result=num1-num2;
+                break;
+            case "x":
+                result=num1*num2;
+                break;
+            case ":":
+                if(num2===0){
+                    document.querySelector("#message").textContent = "Không chia được cho 0!";
+                    return null;
+                }
+                result=num1/num2;
+                break;
+        }
+        document.querySelector("#result").textContent = result;
+    }
+</script>
