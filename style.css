@@ -46,7 +46,6 @@ button {
     cursor: pointer;
     transition: background 0.2s ease;
 }
-
 button:hover {
     background: #444;
 }
